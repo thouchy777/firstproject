@@ -53,9 +53,13 @@ function zero_button(){
     console.log(sum);
 }
 function plus_button(){
-    sum = sum+"+";
-    display.textContent = sum;
-    console.log(sum);
+    if (sum!=""){
+        if (sum.slice(-1) != "+"){
+            sum = sum+"+";
+            display.textContent = sum;
+            console.log(sum);
+        }
+    }
 }
 function minus_button(){
     if (sum.slice(-1) != "-"){
@@ -65,14 +69,22 @@ function minus_button(){
     }
 }
 function multiplied_button(){
-    sum = sum+"x";
-    display.textContent = sum;
-    console.log(sum);
+    if (sum!=""){
+        if (sum.slice(-1) != "x"){
+            sum = sum+"x";
+            display.textContent = sum;
+            console.log(sum);
+        }
+    }
 }
 function divide_button(){
-    sum = sum+"÷";
-    display.textContent = sum;
-    console.log(sum);
+    if (sum!=""){
+        if (sum.slice(-1) != "÷"){
+            sum = sum+"÷";
+            display.textContent = sum;
+            console.log(sum);
+        }
+    }
 }
 function op_button(){
     sum = sum+"(";
@@ -85,9 +97,13 @@ function cp_button(){
     console.log(sum);
 }
 function point_button(){
-    sum = sum+".";
-    display.textContent = sum;
-    console.log(sum);
+    if (sum!=""){
+        if (!sum.includes(".")){
+            sum = sum+".";
+            display.textContent = sum;
+            console.log(sum);
+        }
+    }
 }
 function back_button(){
     sum = sum.slice(0, -1);
@@ -101,9 +117,13 @@ function clear_button(){
 }
 function equals_button(){
     sum = sum.replaceAll("x", "*");
+    sum = sum.replaceAll("÷", "/");
     num = eval(sum);
     display.textContent = num;
     console.log(num);
     sum = "";
     num = "0";
 }
+
+
+
