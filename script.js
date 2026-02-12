@@ -116,14 +116,29 @@ function clear_button(){
     console.log(sum);
 }
 function equals_button(){
-    sum = sum.replaceAll("x", "*");
-    sum = sum.replaceAll("÷", "/");
-    num = eval(sum);
-    display.textContent = num;
-    console.log(num);
+    if (sum === "") return;
+
+    num = sum.replaceAll("x", "*")
+                        .replaceAll("÷", "/");
+
+    try {
+        let result = eval(num);
+
+        if (!isFinite(result)) {
+            display.textContent = "error";
+        } else {
+            display.textContent = result;
+            sum = result.toString();
+        }
+
+    } catch (error) {
+        display.textContent = "error";
+        sum = "";
+    }
     sum = "";
     num = "0";
 }
+
 
 
 
